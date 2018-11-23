@@ -1,0 +1,203 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{legalpaper, top=1in, bottom=1in}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+
+\newcommand{\uvec}[1]{\boldsymbol{\hat{\textbf{#1}}}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{MATHS340: Real and Complex Calculus Tutorial 2}
+\fancyhead[R]{AceNighJohn}
+
+\begin{document}
+\begin{titlepage}
+   \vspace*{\stretch{1.0}}
+   \begin{center}
+      \Large\textbf{MATHS340: Real and Complex Calculus}\\
+      \large\textbf{Tutorial 2} \\ 
+      \large\textit{AceNighJohn}
+   \end{center}
+   \vspace*{\stretch{2.0}}
+\end{titlepage}
+\begin{enumerate}
+    \item
+    Use the taylor command in MuPAD to nd the Taylor series expansion of tan(x) about x = 0 up to and including the $x^7$ term. (If you forgot how to use MuPAD, refer to the guide.mn file on Canvas) \\
+\textbf{Solution:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=70mm]{Q1.PNG}
+\end{figure}
+\item
+Let $f(x,y,z) = 3xy^2+xe^z-sin(zy)$.
+\begin{enumerate}
+    \item 
+    Find the linear Taylor polynomial for $f$ at the point (2, 2, 2).
+    \item
+    Check your answer using MuPAD with the command mtaylor(f,[x=2,y=2,z=2],2).
+\end{enumerate}
+\textbf{Solution:} Using the definition of a multi-variable Taylor series:
+\begin{equation*}
+    \begin{split}
+        P_1 (x,y,z) 
+        &= f(2,2,2) + \nabla f(2,2,2) \cdot (x-2, y-2, z-2) \\
+        &= f(2,2,2) + f_x (2, 2, 2)(x-2) + + f_y (2, 2, 2)(y-2)  
+        + f_z (2, 2, 2)(z-2)
+    \end{split}
+\end{equation*} \\
+\begin{equation*}
+    f_x = 3y^2 + e^z , \
+    f_y = 6xy -zcos(zy) ,\
+    f_z = xe^z - ycos(zy)
+\end{equation*}
+\begin{equation*}
+    f_x (2, 2, 2) = 12 + e^2 ,
+    f_y (2, 2, 2) = 24 - 2cos(4), \
+    f_y (2, 2, 2) = 2e^2 - 2cos(4)
+\end{equation*}
+Therefore,
+\begin{equation*}
+    \begin{split}
+    P_1 (x,y,z) 
+    &= (24 + 2e^2 - sin(4)) + (12 + e^2)(x-2) + (24 - 2cos(4))(y-2) + (2e^2 - 2cos(4))(z-2) \\
+    &= 39.53 + 19.39(x-2) + 25.31(y-2) + 16.09(z-2) \\
+    &= 19.39x + 25.31y + 16.09z -82.04
+    \end{split}
+\end{equation*}
+Using MuPAD,
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=150mm]{Q2.PNG}
+\end{figure}
+\item
+Find the tangent plane for the function $f(x,y) = xy^2 -x^3 + 10$ at the point $(1, \frac{3}{2})$. \\
+\textbf{Solution:} \\
+Let $z = f(x,y) = xy^2 -x^3 + 10$ and define $F(x,y,z) = z - xy^2 + x^3 - 10 = 0$.
+\begin{equation*}
+    z(1,\frac{3}{2}) = \frac{9}{4} - 1 + 10 = \frac{45}{4}
+\end{equation*}
+\begin{equation*}
+    F_x = -y^2 + 3x^2, \
+    F_y = -2xy ,\
+    F_z = 1
+\end{equation*}
+\begin{equation*}
+    F_x (1, \frac{3}{2}, \frac{45}{4}) = \frac{3}{4} ,\
+    F_y (1, \frac{3}{2}, \frac{45}{4}) = -3 ,\
+    F_z (1, \frac{3}{2}, \frac{45}{4}) = 1
+\end{equation*}
+The surface at $(1, \frac{3}{2}, \frac{45}{4})$ is perpendicular to the gradient.
+\begin{equation*}
+    \nabla F(1, \frac{3}{2}, \frac{45}{4}) \cdot (x-1, y-\frac{3}{2} ,z-\frac{45}{4}) = 0
+\end{equation*}
+\begin{equation*}
+    \frac{3}{4} (x-1) -  3(y-\frac{3}{2}) + (z-\frac{45}{4}) = 0
+\end{equation*}
+\begin{equation*}
+    z = - \frac{3}{4} x + 3y + \frac{15}{2}
+\end{equation*}
+\item
+Find $\norm{\mathbf{u} \times \mathbf{v}}$, where $\norm{\mathbf{u}} = 2$ and $\norm{\mathbf{v}} = 5$, and the angle between $\mathbf{u}$ and $\mathbf{v}$ is $\frac{\pi}{6}$. \\
+\textbf{Solution:} \\
+Using the formula: $\norm{\mathbf{u} \times \mathbf{v}} = \norm{\mathbf{u}} \ \norm{\mathbf{v}} \  sin(\theta)$, \ where $\theta$ is the angle between $\norm{\mathbf{u}}$ and $\norm{\mathbf{v}}$.\\
+\begin{equation*}
+    \norm{\mathbf{u} \times \mathbf{v}} = 2 \times 5 \times sin(\frac{\pi}{6}) = 5
+\end{equation*}
+\newpage
+\item
+Let $\mathbf{u}$ = [4, 0, 0] and $\mathbf{v}$ = [0, 0, 3]. Calculate the cross product $\mathbf{u} \times \mathbf{v}$ without using determinants.
+\\
+$\textbf{Solution:}$ 
+Using the formula: $\mathbf{u} \times \mathbf{v} = \norm{\mathbf{u}} \ \norm{\mathbf{v}} \  sin(\theta) \hat{e}$, where $\hat{e}$ is the unit vector perpendicular to both $\mathbf{u}$ and $\mathbf{v}$ while obeying the right hand rule. \\
+Notice that $\mathbf{u}$ and $\mathbf{v}$ are just scalar multiples of $\uvec{i}$ and $\uvec{k}$ respectively. So $\hat{e}$ is $-\uvec{j}$. Trivially, $\norm{\mathbf{u}} = 4$, $\norm{\mathbf{u}} = 3$ and $\theta = \frac{\pi}{2}$.
+\begin{equation*}
+    \mathbf{u} \times \mathbf{v} = 4 \times 3 sin(\frac{\pi}{2}) -\uvec{j}
+    = -12 \uvec{j} = [0, -12, 0]
+\end{equation*}
+\item
+Suppose $\mathbf{u}$ = $[t, cos(2t), e^t]$. Use the diff command to find d$\mathbf{u}$/dt. You can find out about the diff command by typing ?diff. \\
+$\textbf{Solution:}$ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=70mm]{Q6.PNG}
+\end{figure}
+\item
+If $\mathbf{u}$ = $[t, cos(2t), e^t]$, $\mathbf{v}$ = $[-t, 0, (1+t)^-1]$, what is d($\mathbf{u} \times \mathbf{v}$)/dt?
+\textbf{Solution:} Using the same $\mathbf{u}$ in the MuPAD code in Question 6;
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=70mm]{Q7.PNG}
+\end{figure}
+\item
+Plot the following points in $\mathbb{R}^3$ using MuPAD:
+\begin{equation*}
+    (0, 0, 0), (5, 0, 0), (1, 4, 0), (6, 4, 0), (1, 1, 2), (6, 1, 2), (2, 5, 2), (7, 5, 2):
+\end{equation*}
+These are the vertices of a parallelopiped. What three vectors can be used to define the
+paralellopiped? Find the volume of the parallelopiped using a scalar triple product.
+\textbf{Solution:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.595]{Q8.PNG}
+\end{figure}
+\newpage
+\item
+An ant is on a rotating disk whose rotation is accelerating at 0.01 revolutions per second-squared. The ant is walking radially outwards along the disk at 10 mm $\text{s}^{-1}$. What is the velocity and
+acceleration (in plane polar coordinates) of the ant when it is 7 centimetres from the centre of the disk and the disk is rotating at 0.1 revolutions per second? \\
+$\textbf{Solution:}$ Using polar co-ordinates and SI units, \\
+We have $r' = 0.01 $ m/s and $\theta '' = 0.01 \times 2\pi $ = $0.02 \pi$ rad/$\text{s}^2$. We will assume that  $r(0) = 0$. Therefore,
+\begin{equation*}
+    r(t) = 0.01t ,\ 
+    \theta ' (t) = 0.02\pi t + k,\
+\end{equation*}
+At $t=7$, the ant is at $r=0.07$ m away from the centre of the disk and we also know that $\theta' = 0.1 \times 2\pi = 0.2 \pi$ rad/s at this time. 
+\begin{equation*}
+    \theta ' (7) = 0.02\pi \times 7 + k = 0.2 \pi \Longrightarrow k = 0.06 \pi 
+\end{equation*}
+\begin{equation*}
+    \theta ' (t) = 0.02\pi t + 0.06 \pi
+\end{equation*}
+Recall that velocity and acceleration in polar co-ordinates are given by: 
+\begin{equation*}
+    \mathbf{v} = r' e_{r} + r \theta ' e_{\theta} ,\
+    \mathbf{a} = (r'' - r(\theta ')^2)e_{r} + (r\theta '' + 2r' \theta ') e_{\theta}
+\end{equation*}
+After substitution,
+\begin{equation*}
+    \mathbf{v} = 0.01 e_{r} + 0.014 \pi e_{\theta}
+\end{equation*}
+\begin{equation*}
+    \mathbf{a} = -0.0276 e_{r} + 0.017 e_{\theta}
+\end{equation*}
+\item
+Express the position of the ant from the previous question after $t$ seconds in a fixed Cartesian frame of reference. You may assume that the ant is at the centre of the disk when $t = 0$. In MuPAD, plot the ant's path for $0 \leq t \leq 20$ seconds. You may find the following commands useful: \\
+curve:=plot::Curve2d([x(t),y(t)],t=t0..t1) \\
+plot(curve) \\
+$\textbf{Solution:}$ \\
+Carrying on from Question 9, we assume $\theta (0) = 0$. 
+\begin{equation*}
+    \theta = 0.01 \pi t^2 + 0.06 \pi t
+\end{equation*}
+Hence,
+\begin{equation*}
+    \begin{split}
+        R(t) 
+        &= r e_{r} 
+        = r[cos(\theta)\uvec{i} + sin(\theta)\uvec{j}] \\
+        &= 0.01t cos(0.01 \pi t^2 + 0.06 \pi t)\uvec{i} + 0.01t sin(0.01 \pi t^2 + 0.06 \pi t)\uvec{j}   
+        = 
+    \end{split}
+\end{equation*}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.9]{Q10.PNG}
+\end{figure}
+\end{enumerate}
+\end{document}
