@@ -1,0 +1,205 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{legalpaper, top=1in, bottom=1in}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+
+\newcommand{\uvec}[1]{\boldsymbol{\hat{\textbf{#1}}}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{MATHS340: Real and Complex Calculus Tutorial 1}
+\fancyhead[R]{AceNighJohn}
+
+\begin{document}
+\begin{titlepage}
+   \vspace*{\stretch{1.0}}
+   \begin{center}
+      \Large\textbf{MATHS340: Real and Complex Calculus}\\
+      \large\textbf{Tutorial 1} \\ 
+      \large\textit{AceNighJohn}
+   \end{center}
+   \vspace*{\stretch{2.0}}
+\end{titlepage}
+\begin{enumerate}
+\item
+Work through the MuPAD guide (instructions can be found at the end of this document).
+\item
+Let $\mathbf{v} = [1,2,3,4,5]$ and $\mathbf{u} = [1.5,\pi,e,0,2]$. Calculate $\mathbf{v} \cdot \mathbf{u}$ by hand. Check your answer
+using MuPAD. \\
+$\textbf{Solution:}$ \\
+\begin{equation*}
+    \mathbf{v} \cdot \mathbf{u}
+    = 1.5 + 2\pi + 3e + 10
+    = 25.94
+\end{equation*}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.8]{Q2.PNG}
+\end{figure}
+\item
+Let $\mathbf{a} = [1,2,2,4]$. Calculate $\norm{\mathbf{a}}$ by hand and then using MuPAD. \\
+$\textbf{Solution:}$ \\
+\begin{equation*}
+    \norm{\mathbf{a}} = \sqrt{1^2 + 2^2 + 2^2 + 4^2} = \sqrt{25} = 5
+\end{equation*}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.95]{Q3.PNG}
+\end{figure}
+\item
+If $\mathbf{a} = [1,2]$ and $\mathbf{b} = [-1,-2]$, what is the angle between $\mathbf{a}$ and $\mathbf{b}$? \\
+$\textbf{Solution:}$ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.95]{Q4.PNG}
+\end{figure}
+\item
+Plot the three vectors $\mathbf{a} = [1,0,0]$, $\mathbf{b} = [0,1,0]$ and $\mathbf{c} = [1,1,0]$ using MuPAD. The following command can be used:
+plot(matrix([1,0,0]),matrix([0,1,0]),matrix([1,1,0]),#3D) \\
+Do the vectors form a basis for $\mathbb{R}^3$? Why or why not? Before you move on, explain your answer to another student or your tutor. \\
+$\textbf{Solution:}$ \\
+Since $\mathbf{c} = \mathbf{a} + \mathbf{b}$, we only have two linearly independent vectors: $\mathbf{a}$ and $\mathbf{b}$. A basis for $\mathbb{R} ^3$ would need three linearly independent vectors. If we do want a basis for $\mathbb{R} ^3$, any vector with a non-zero component in the z-axis would suffice.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.85]{Q5.PNG}
+\end{figure}
+\item
+Are $\mathbf{a} = [1, 2, 3]$ and $\mathbf{b} = [1, 0, 4]$ orthogonal? You can do the calculations in your head. \\
+$\textbf{Solution:}$ \\
+If $\mathbf{a}$ and $\mathbf{b}$ were orthogonal, then $\mathbf{a} \cdot \mathbf{b} = 0$. In this case,
+\begin{equation*}
+    \mathbf{a} \cdot \mathbf{b} = 1 + 0 + 12 = 13 \neq 0
+\end{equation*}
+Therefore, $\mathbf{a}$ and $\mathbf{b}$ are not orthogonal.
+\newpage
+\item
+Consider the function $f(x,y) = \text{ln}(x^2+y^2)$.
+\begin{enumerate}
+    \item 
+    Plot a graph of the function using MuPAD.
+    \item 
+    Show that $f(x,y) = \text{ln}(x^2+y^2)$ satisfies the partial differential equation $f_{xx} + f_{yy} = 0$ except possibly at 
+    (0, 0).
+\end{enumerate}
+$\textbf{Solution:}$
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.95]{Q7.PNG}
+\end{figure}
+\item
+Find the equation of the plane through the points (1, 0, 0), (0,-2, 0) and (0, 0, 3). Plot the graph of the plane and the three points using MuPAD. The points should appear to be on the graph of the plane. Hint: To plot a point in $\mathbb{R}^3$, use the command: plot([x,y,z],#3D). \\
+$\textbf{Solution}:$ \\
+Define $\mathbf{u} = (1, 0, 0) - (0, 0, 3) = (1, 0, -3)$ and 
+$\mathbf{v} = (0,-2, 0) - (0, 0, 3)   = (0, -2, -3)$.
+$\mathbf{u}$ and $\mathbf{v}$ both lie on the plane and are linearly independent. 
+\begin{equation*}
+    \mathbf{u} \times \mathbf{v} = (-6, 3, -2)
+\end{equation*}
+So the equation can be found using: $(-6, 3, -2) \cdot (x-1, y, z)$ = 0
+\begin{equation*}
+    -6(x-1)+3y-2z = 0 \Longrightarrow -6x + 3y - 2z = -6
+    \Longrightarrow z = 3 -3x + \frac{3}{2} y
+\end{equation*}
+Alternatively, we could have also used:  
+$(-6, 3, -2) \cdot (x, y+2, z)$ = 0
+\begin{equation*}
+    -6x+3(y+2)-2z = 0 \Longrightarrow -6x + 3y - 2z = -6
+    \Longrightarrow z = 3 -3x + \frac{3}{2} y
+\end{equation*}
+Or: $(-6, 3, -2) \cdot (x, y, z-3)$ = 0
+\begin{equation*}
+    -6x+3y -2(z-3) = 0 \Longrightarrow -6x + 3y - 2z = -6
+    \Longrightarrow z = 3 -3x + \frac{3}{2} y
+\end{equation*}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.95]{Q8.PNG}
+\end{figure}
+\item
+Use substitution to evaluate the following integral:
+\begin{equation*}
+    \int \text{sin} ^5 \theta \ d\theta
+\end{equation*}
+\textbf{Solution:} \\
+\begin{equation*}
+    \int \text{sin} ^5 \theta \ d\theta
+    = \int \text{sin} ^2 \theta \  \text{sin} ^2 \theta \ \text{sin} \theta \ d\theta
+    = \int (1 - \text{cos} ^ 2\theta) ^2  \  \text{sin} \theta \ d\theta
+\end{equation*}
+Let $u = \text{cos} \theta$, $du = -\text{sin}\theta \ d\theta$
+Therefore,
+\begin{equation*}
+\begin{split}
+    &\int (1 - \text{cos} ^ 2\theta) ^2  \  \text{sin} \theta \ d\theta
+    = - \int (1-u^2) ^2 \ du
+    = - \int (1 - 2 u ^2 + u ^ 4 ) \ du \\
+    &= - (u - \frac{2}{3} u ^ 3 + \frac{1}{5} u ^ 5) + c
+    = - u + \frac{2}{3} u ^ 3 - \frac{1}{5} u ^ 5 + c \\
+    &= - \text{cos} \theta + \frac{2}{3} \text{cos} ^ 3 \theta - \frac{1}{5} \text{cos} ^ 5 \theta + c
+\end{split}
+\end{equation*}
+\item
+Use integration by parts to evaluate the following integral:
+\begin{equation*}
+    \int \text{ln}x \ dx
+\end{equation*}
+\textbf{Solution:} \\
+\begin{equation*}
+    \begin{split}
+        \int \text{ln}x \ dx
+        &= x\text{ln}x - \int x \ d(\text{ln}x)
+        = x\text{ln}x -\int x \frac{1}{x} \ dx \\
+        &= x\text{ln}x -\int  \ dx
+        = x\text{ln}x - x + c
+    \end{split}
+\end{equation*}
+\item
+Evaluate by hand and using MuPAD.
+\begin{equation*}
+    \int \sqrt{e^{2t}-9} \ dt
+\end{equation*}
+$\textbf{Solution:}$ \\
+Let $u = \sqrt{e^{2t}-9}$, therefore, $e^{2t} = u^2 + 9$,
+\begin{equation*}
+    \frac{du}{dt} = \frac{1}{2u} 2 e^{2t} = \frac{u^2 + 9}{u}
+    \Longrightarrow dt = \frac{u}{u^2+9} du
+\end{equation*}
+Hence,
+\begin{equation*}
+\begin{split}
+    \int \sqrt{e^{2t}-9} \ dt
+    &= \int u \times \frac{u}{u^2+9} \ du
+    = \int \frac{u^2}{u^2+9} \ du
+    = \int \frac{u^2 + 9 - 9}{u^2+9} \ du \\
+    &= \int (1 - \frac{9}{u^2+9}) \ du
+    = u - \int (\frac{9}{u^2+9}) \ du
+\end{split}
+\end{equation*}
+Let $u = 3w$, therefore, $du = 3\ dw$,
+\begin{equation*}
+\begin{split}
+    &u - \int (\frac{9}{u^2+9}) \ du
+    = u - \int (\frac{9}{(3w)^2+9}) \ 3 \ dw
+    = u - 3 \int (\frac{9}{9w^2+9}) \ dw \\
+    &= u - 3 \int (\frac{1}{w^2+1}) \ dw
+    = u - 3 \text{tan}^{-1} (w) + c
+    = \sqrt{e^{2t}-9} - 3\ \text{tan}^{-1} (\frac{1}{3} \sqrt{e^{2t}-9})
+    + c
+\end{split}
+\end{equation*}
+Using MuPAD, we get a mess, but the solutions are the same if you were to simplify using trigonometric identities.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Q11.PNG}
+\end{figure}
+\includepdf[pages={2}]{Tutorial1.pdf}
+\end{enumerate}
+\end{document}
